@@ -8,13 +8,15 @@ The **UC3M-LP dataset** is used for training and evaluation. It is the largest o
 - **12,757 plate characters**
 - Polygonal plate labels for **rectification** and **character bounding boxes** for OCR fine-tuning
 
-More details about the dataset can be found [here](link).
 
 ## Training Details
 The model was trained using a **distributed approach** on **four NVIDIA A100-SXM4-40GB GPUs** for enhanced computational efficiency. Training setup:
 - **Base Learning Rate:** `2×10−4` (increased from `1×10−4`)
-- **Pretrained Checkpoint:** `checkpoint0300.pth` (Epoch 300)
-- **Total Training Epochs:** 450
+- **Total Training Epochs:** `450`
+- **Num Classes:** `1`
+- **Backbone:** `resnet50`
+- **Batch Size:** `4`
+- **Num Queries:** `10`
 
 ## Data Augmentation
 To improve the robustness of the model under **real-world conditions**, various data augmentation techniques were implemented in `transforms.py` and integrated into the training pipeline in `coco.py`:
@@ -27,20 +29,23 @@ To improve the robustness of the model under **real-world conditions**, various 
 
 ## Experimental Results
 Evaluation metrics on the test set:
-- **AP@0.50:0.95:** `0.465`
-- **AP@0.50:** `0.819`
-- **AP@0.75:** `0.476`
-- **AP for Large Objects:** `0.477`
-- **AP for Medium Objects:** `0.143`
-- **AP for Small Objects:** `-1.000`
 
-Average Recall (AR):
-- **AR@1:** `0.464`
-- **AR@10:** `0.556`
-- **AR@100:** `0.556`
-- **AR for Large Objects:** `0.568`
-- **AR for Medium Objects:** `0.242`
-- **AR for Small Objects:** `-1.000`
+```
+IoU metric: bbox
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.465
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.819
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.476
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = -1.000
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.143
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.477
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.464
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.556
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.556
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = -1.000
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.242
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.568
+Training time 4:11:16
+```
 
 ## Model Performance on Real-World Images
 The final model was evaluated on **real-world images** under **challenging conditions**, including:
@@ -55,6 +60,7 @@ To set up the project environment, install dependencies using:
 
 ```bash
 pip install -r requirements.txt
+```
 
 ## Citation
 If you use this model, please cite the following:
