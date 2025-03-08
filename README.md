@@ -53,6 +53,8 @@ The final model was evaluated on **real-world images** under **challenging condi
 - **Adverse weather conditions (rain, fog)**
 - **Motion blur and occlusions**
 
+<img src="Outputs/output.png" width="750" height="500">
+
 The model delivered **highly accurate and reliable** results, demonstrating strong generalization and robustness.
 
 ## Installation
