@@ -59,6 +59,11 @@ The model delivered **highly accurate and reliable** results, demonstrating stro
 To set up the project environment, install dependencies using:
 
 ```bash
+# Clone the repository
+git clone https://github.com/das-sunanda/DETR-for-License-Plate-Detection.git
+cd DETR-for-License-Plate-Detection
+
+# Install dependencies
 pip install -r requirements.txt
 ```
 
