@@ -92,7 +92,6 @@ The dataset is derived from the UC3M-LP dataset:
 @article{uc3m-lp,
   title={UC3M-LP: A New Open-Source Dataset for License Plate Detection and Recognition},
   author={UC3M-LP Team},
-  journal={LSI UC3M},
   year={2023},
   url={https://lsi.uc3m.es/2023/12/22/uc3m-lp-a-new-open-source-dataset/}
 }
